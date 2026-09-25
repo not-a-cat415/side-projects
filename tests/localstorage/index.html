@@ -5,17 +5,17 @@
   <script>
     const counter = document.getElementById("stored")
     let ncounter = 0
-    if (localStorage.getItem("count") === null) {
-      localStorage.setItem("count", 0)
+    if (localStorage.count === undefined) {
+      localStorage.count = 0
     }
     else {
-      ncounter = Number(localStorage.getItem("count"))
+      ncounter = localStorage.count
     }
     counter.innerHTML = ncounter
     function countup() {
       ncounter += 1
       counter.innerHTML = ncounter
-      localStorage.setItem("count", ncounter)
+      localStorage.count = ncounter
     }
   </script>
 </html>
