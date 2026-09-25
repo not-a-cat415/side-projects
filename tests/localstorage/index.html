@@ -3,7 +3,7 @@
   <p id="stored"></p>
   <button onclick="countup()">Count Up</button>
   <script>
-    const counter = document.getElementByID("stored")
+    const counter = document.getElementById("stored")
     let ncounter = 0
     if (localStorage.getItem("count") === null) {
       localStorage.setItem("count", 0)
