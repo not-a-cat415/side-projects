@@ -34,10 +34,14 @@
           const cell = document.createElement('div');
           cell.className = 'cell';
           cell.textContent = i;
-          cell.onclick = () => {
-            cell.textContent = "X"
-          }
           grid.appendChild(cell);
+        }
+      }
+      grid.onclick = (event) => {
+        const cell = event.target.closest('.grid-cell')
+        if (cell) {
+          console.log("Clicked cell content:", cell.textContent);
+          cell.style.backgroundColor = 'lightblue'; // Example action
         }
       }
       generateGrid(3);
