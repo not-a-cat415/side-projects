@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hello, World!</title>
+    <style>
+      #grid {
+        display: grid;
+        gap: 5px;
+      }
+      .cell {
+        background-color: #f0f0f0;
+        border: 1px solid #ccc;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        font-size: 14px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="grid"></div>
+    <script>
+    function generateGrid(n) {
+      const grid = document.getElementById('grid');
+    
+      grid.innerHTML = '';
+    
+      grid.style.gridTemplateColumns = `repeat(${n}, 40px)`;
+    
+      const totalCells = n * n;
+        for (let i = 1; i <= totalCells; i++) {
+          const cell = document.createElement('div');
+          cell.className = 'cell';
+          cell.textContent = i;
+          grid.appendChild(cell);
+        }
+      }
+      generateGrid(3);
+    </script>
+  </body>
+</html>
