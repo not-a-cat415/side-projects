@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Hello, World!</title>
     <style>
       #grid {
         display: grid;
@@ -35,13 +34,6 @@
           cell.className = 'cell';
           cell.textContent = i;
           grid.appendChild(cell);
-        }
-      }
-      grid.onclick = (event) => {
-        const cell = event.target.closest('.grid-cell')
-        if (cell) {
-          console.log("Clicked cell content:", cell.textContent);
-          cell.style.backgroundColor = 'lightblue'; // Example action
         }
       }
       generateGrid(3);
