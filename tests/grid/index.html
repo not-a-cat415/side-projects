@@ -1,3 +1,4 @@
+%%html
 <!DOCTYPE html>
 <html>
   <head>
@@ -7,7 +8,6 @@
         gap: 5px;
       }
       .cell {
-        background-color: #f0f0f0;
         border: 1px solid #ccc;
         display: flex;
         align-items: center;
@@ -21,22 +21,24 @@
   <body>
     <div id="grid"></div>
     <script>
+      const colors = ["#ff8080", "#ffa880", "#ffff80", "#80ff80", "#80ffff", "#80a8ff", "#a880ff", "#ff80a8"]
+      const colorpos = [0, 1, 2, 3, 4, 5, 6, 7, 0, 1, 2, 3, 4, 5, 6, 7]
       function generateGrid(n) {
         const grid = document.getElementById('grid');
-    
+
         grid.innerHTML = '';
-    
+
         grid.style.gridTemplateColumns = `repeat(${n}, 40px)`;
-    
+
         const totalCells = n * n;
         for (let i = 1; i <= totalCells; i++) {
           const cell = document.createElement('div');
+          cell.style.backgroundColor = colors[colorpos[i-1]]
           cell.className = 'cell';
-          cell.textContent = i;
           grid.appendChild(cell);
         }
       }
-      generateGrid(3);
+      generateGrid(4);
     </script>
   </body>
 </html>
