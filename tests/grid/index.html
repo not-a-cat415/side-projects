@@ -1,3 +1,4 @@
+%%html
 <!DOCTYPE html>
 <html>
   <head>
@@ -11,30 +12,38 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 40px;
-        height: 40px;
-        font-size: 14px;
+        width: 60px;
+        height: 60px;
+        font-size: 21px;
       }
     </style>
   </head>
   <body>
     <div id="grid"></div>
     <script>
-      const colors = ["#ff8080", "#ffa880", "#ffff80", "#80ff80", "#80ffff", "#80a8ff", "#a880ff", "#ff80a8"]
-      const colorpos = [0, 1, 2, 3, 4, 5, 6, 7, 0, 1, 2, 3, 4, 5, 6, 7]
+      const colors = ["#ff8080", "#ffa880", "#ffff80", "#80ff80", "#80ffff", "#80a8ff", "#a880ff", "#ff80ff"];
+      const colorpos = [0, 1, 2, 3, 4, 5, 6, 7, 0, 1, 2, 3, 4, 5, 6, 7];
+      const grid = document.getElementById('grid');
+      const colorcount = colors.length
       function generateGrid(n) {
-        const grid = document.getElementById('grid');
-
         grid.innerHTML = '';
 
-        grid.style.gridTemplateColumns = `repeat(${n}, 40px)`;
+        grid.style.gridTemplateColumns = `repeat(${n}, 60px)`;
 
         const totalCells = n * n;
-        for (let i = 1; i <= totalCells; i++) {
+        for (let i = 0; i < totalCells; i++) {
           const cell = document.createElement('div');
-          cell.style.backgroundColor = colors[colorpos[i-1]]
+          cell.style.backgroundColor = colors[colorpos[i]]
           cell.className = 'cell';
+          cell.xval = i % n
+          cell.yval = Math.floor(i / n)
+          cell.ival = i
           grid.appendChild(cell);
+          cell.onclick = () => {
+            randomNumber = Math.floor(Math.random() * colorcount)
+            cell.style.backgroundColor = colors[randomNumber]
+            colorpos[cell.ival] = randomNumber
+          }
         }
       }
       generateGrid(4);
